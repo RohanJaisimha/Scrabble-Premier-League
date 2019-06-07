@@ -7,6 +7,7 @@ class Player:
    self.nationality=nationality
    self.scrabble_score=self.get_scrabble_score()
 
+  #function that counts the scrabble score for a given name
   def get_scrabble_score(self):
     name_cleaned=clean(unidecode.unidecode(self.name.lower()))
     count=count_letters(name_cleaned)
@@ -35,6 +36,8 @@ class Player:
   def __ge__(self,other):
     return not self.__lt__(other)
 
+#function that counts the number of letters in a string and saves it as a dictionary
+#Eg. count_letters("chicken waffles") = {'a':1,'c':2,'e':2,'f':2,'h':1,'i':1,'k':1,'l':1,'n':1,'s':1,'w':1}
 def count_letters(text):
   count={}
   for i in text:
@@ -44,6 +47,8 @@ def count_letters(text):
       count[i]=1
   return count
 
+#function that takes in text and removes all non-lower case characters
+#Eg. clean("chicke'n waffle!#@$%#@()@)#s") = "chickenwaffles"
 def clean(text):
   for i in range(97):
     text=text.replace(chr(i),"")
